@@ -303,9 +303,13 @@ PrefabInstance:
       value: 145
       objectReference: {fileID: 0}
     - target: {fileID: -1504981713932161579, guid: 0464afc39207ab540b94807b2273e3e5, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: 0464afc39207ab540b94807b2273e3e5, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 0d50d43c9ad595043be900e1d3d0fa47, type: 2}
+      objectReference: {fileID: 2100000, guid: b762176af7fc7754495c5d2a968fc2eb, type: 2}
     - target: {fileID: -927199367670048503, guid: 0464afc39207ab540b94807b2273e3e5, type: 3}
       propertyPath: m_Name
       value: Card_0
@@ -378,7 +382,7 @@ PrefabInstance:
     - target: {fileID: -1504981713932161579, guid: 0464afc39207ab540b94807b2273e3e5, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 0d50d43c9ad595043be900e1d3d0fa47, type: 2}
+      objectReference: {fileID: 2100000, guid: f0001d4062e6d984eaa54a73b1761904, type: 2}
     - target: {fileID: -927199367670048503, guid: 0464afc39207ab540b94807b2273e3e5, type: 3}
       propertyPath: m_Name
       value: Card_2
@@ -451,7 +455,7 @@ PrefabInstance:
     - target: {fileID: -1504981713932161579, guid: 0464afc39207ab540b94807b2273e3e5, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 962ea23ce5e52544182ad42af87a58ad, type: 2}
+      objectReference: {fileID: 2100000, guid: 05d2bbe2268c0c042b01373bfc7c1904, type: 2}
     - target: {fileID: -927199367670048503, guid: 0464afc39207ab540b94807b2273e3e5, type: 3}
       propertyPath: m_Name
       value: Card_4
@@ -524,7 +528,7 @@ PrefabInstance:
     - target: {fileID: -1504981713932161579, guid: 0464afc39207ab540b94807b2273e3e5, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: b06be638707ea114a8839e724c2716f8, type: 2}
+      objectReference: {fileID: 2100000, guid: f0001d4062e6d984eaa54a73b1761904, type: 2}
     - target: {fileID: -927199367670048503, guid: 0464afc39207ab540b94807b2273e3e5, type: 3}
       propertyPath: m_Name
       value: Card_3
@@ -597,7 +601,7 @@ PrefabInstance:
     - target: {fileID: -1504981713932161579, guid: 0464afc39207ab540b94807b2273e3e5, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 055131ada20ba1c48aaedae493c2b091, type: 2}
+      objectReference: {fileID: 2100000, guid: 219ff300bbc045c44a88c6527804f25a, type: 2}
     - target: {fileID: -927199367670048503, guid: 0464afc39207ab540b94807b2273e3e5, type: 3}
       propertyPath: m_Name
       value: Card_1
