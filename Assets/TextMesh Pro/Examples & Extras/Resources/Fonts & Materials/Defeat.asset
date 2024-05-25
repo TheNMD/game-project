@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
-  m_Name: MedusaGothic D SDF
+  m_Name: Defeat
   m_EditorClassIdentifier: 
-  hashCode: -1534314624
+  hashCode: -1676101929
   material: {fileID: 6630953697089206467}
-  materialHashCode: -382971104
+  materialHashCode: -1133244777
   m_Version: 1.1.0
   m_SourceFontFileGUID: db1fc529552b0914f8330e1f420473cb
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: db1fc529552b0914f8330e1f420473cb, type: 3}
