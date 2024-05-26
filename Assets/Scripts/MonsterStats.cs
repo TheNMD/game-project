@@ -1,21 +1,18 @@
 using UnityEngine;
 using TMPro;
 
-public class PlayerStats : MonoBehaviour
+public class MonsterStats : MonoBehaviour
 {
     public TextMeshProUGUI HPText;
     public TextMeshProUGUI ShieldText;
-    public TextMeshProUGUI EnergyText;
 
     private int HPValue;
     private int ShieldValue;
-    private int EnergyValue;
 
     void Start()
     {
-        HPValue = 100;
+        HPValue = 50;
         ShieldValue = 0;
-        EnergyValue = 3;
 
         UpdateUI();
     }
@@ -32,16 +29,9 @@ public class PlayerStats : MonoBehaviour
         UpdateUI();
     }
 
-    public void SetEnergy(int value)
-    {
-        EnergyValue = value;
-        UpdateUI();
-    }
-
     void UpdateUI()
     {
         HPText.text = HPValue.ToString();
         ShieldText.text = ShieldValue.ToString();
-        EnergyText.text = EnergyValue.ToString();
     }
 }

@@ -1172,8 +1172,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 30
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 00747fb204995a34cb408de55d1d60af, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 00747fb204995a34cb408de55d1d60af, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2475,7 +2475,7 @@ GameObject:
   - component: {fileID: 1059386814}
   - component: {fileID: 1059386813}
   m_Layer: 7
-  m_Name: HP_Text
+  m_Name: Action_Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2520,10 +2520,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 30
+  m_text: 0
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 00747fb204995a34cb408de55d1d60af, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 00747fb204995a34cb408de55d1d60af, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2819,6 +2819,7 @@ GameObject:
   - component: {fileID: 1166246882}
   - component: {fileID: 1166246884}
   - component: {fileID: 1166246883}
+  - component: {fileID: 1166246885}
   m_Layer: 7
   m_Name: MonsterStats
   m_TagString: Untagged
@@ -2887,6 +2888,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1166246881}
   m_CullTransparentMesh: 1
+--- !u!114 &1166246885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1166246881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25a0dc768008aae4cbc7d0ecaa3850e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HPText: {fileID: 517681007}
+  ShieldText: {fileID: 1342408228}
 --- !u!1 &1276742551
 GameObject:
   m_ObjectHideFlags: 0
@@ -3368,8 +3383,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 0
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 00747fb204995a34cb408de55d1d60af, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 00747fb204995a34cb408de55d1d60af, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
