@@ -9,8 +9,6 @@ public class MenuSwitcher : MonoBehaviour
     public Image MenuDefeat;    
     public Image MenuCredits;        
 
-    public PlayerStats playerStats;
-
     void Start()
     {
         MenuStart.gameObject.SetActive(true);
@@ -32,18 +30,6 @@ public class MenuSwitcher : MonoBehaviour
         MenuStart.gameObject.SetActive(true);
     }
 
-    public void StartToCredit()
-    {
-        MenuStart.gameObject.SetActive(false);
-        MenuCredits.gameObject.SetActive(true);
-    }
-
-    public void CreditToStart()
-    {
-        MenuCredits.gameObject.SetActive(false);
-        MenuStart.gameObject.SetActive(true);
-    }
-
     public void VictoryToStart()
     {
         MenuVictory.gameObject.SetActive(false);
@@ -53,6 +39,18 @@ public class MenuSwitcher : MonoBehaviour
     public void DefeatToStart()
     {
         MenuDefeat.gameObject.SetActive(false);
+        MenuStart.gameObject.SetActive(true);
+    }
+
+    public void StartToCredit()
+    {
+        MenuStart.gameObject.SetActive(false);
+        MenuCredits.gameObject.SetActive(true);
+    }
+
+    public void CreditToStart()
+    {
+        MenuCredits.gameObject.SetActive(false);
         MenuStart.gameObject.SetActive(true);
     }
 }

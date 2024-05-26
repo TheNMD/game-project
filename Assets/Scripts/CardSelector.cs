@@ -11,7 +11,7 @@ public class CardSelector : MonoBehaviour
 
     void Start()
     {
-        DeckValue = 30;
+        DeckValue = 15;
         DiscardValue = 0;
 
         UpdateUI();
