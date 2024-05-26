@@ -1,18 +1,48 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class PlayerStats : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public TextMeshProUGUI HPText;
+    public TextMeshProUGUI ShieldText;
+    public TextMeshProUGUI EnergyText;
+
+    private int HPValue;
+    private int ShieldValue;
+    private int EnergyValue;
+
     void Start()
     {
-        
+        HPValue = 100;
+        ShieldValue = 0;
+        EnergyValue = 3;
+
+        UpdateUI();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetHP(int value)
     {
-        
+        HPValue = value;
+        UpdateUI();
+    }
+
+    public void SetShield(int value)
+    {
+        ShieldValue = value;
+        UpdateUI();
+    }
+
+    public void SetEnergy(int value)
+    {
+        EnergyValue = value;
+        UpdateUI();
+    }
+
+    void UpdateUI()
+    {
+        HPText.text = HPValue.ToString();
+        ShieldText.text = ShieldValue.ToString();
+        EnergyText.text = EnergyValue.ToString();
     }
 }

@@ -9,6 +9,8 @@ public class MenuSwitcher : MonoBehaviour
     public Image MenuDefeat;    
     public Image MenuCredits;        
 
+    public PlayerStats playerStats;
+
     void Start()
     {
         MenuStart.gameObject.SetActive(true);
