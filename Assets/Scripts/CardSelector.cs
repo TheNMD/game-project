@@ -1,18 +1,38 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class CardSelector : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public TextMeshProUGUI DeckText;
+    public TextMeshProUGUI DiscardText;
+
+    private int DeckValue;
+    private int DiscardValue;
+
     void Start()
     {
-        
+        DeckValue = 30;
+        DiscardValue = 0;
+
+        UpdateUI();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetDeck(int value)
     {
-        
+        DeckValue = value;
+        UpdateUI();
+    }
+
+    public void SetDiscard(int value)
+    {
+        DiscardValue = value;
+        UpdateUI();
+    }
+
+    void UpdateUI()
+    {
+        DeckText.text = DeckValue.ToString();
+        DiscardText.text = DiscardValue.ToString();
     }
 }
