@@ -1,6 +1,8 @@
 using UnityEngine;
 using TMPro;
 
+namespace SlayTheHaunted
+{
 public class PlayerStats : MonoBehaviour
 {
     public TextMeshProUGUI HPText;
@@ -45,3 +47,5 @@ public class PlayerStats : MonoBehaviour
         EnergyText.text = EnergyValue.ToString();
     }
 }
+}
+

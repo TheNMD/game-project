@@ -1,6 +1,8 @@
 using UnityEngine;
 using TMPro;
 
+namespace SlayTheHaunted
+{
 public class TurnCounter : MonoBehaviour
 {
     public TextMeshProUGUI TurnText;
@@ -25,3 +27,5 @@ public class TurnCounter : MonoBehaviour
         TurnText.text = TurnValue.ToString();
     }
 }
+}
+

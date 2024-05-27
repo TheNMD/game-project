@@ -1,6 +1,8 @@
 using UnityEngine;
 using TMPro;
 
+namespace SlayTheHaunted
+{
 public class CardSelector : MonoBehaviour
 {
     public TextMeshProUGUI DeckText;
@@ -35,3 +37,5 @@ public class CardSelector : MonoBehaviour
         DiscardText.text = DiscardValue.ToString();
     }
 }
+}
+

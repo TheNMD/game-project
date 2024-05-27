@@ -1,56 +1,60 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MenuSwitcher : MonoBehaviour
+namespace SlayTheHaunted
 {
-    public Image MenuStart;
-    public Image MenuFight;
-    public Image MenuVictory;
-    public Image MenuDefeat;    
-    public Image MenuCredits;        
-
-    void Start()
+    public class MenuSwitcher : MonoBehaviour
     {
-        MenuStart.gameObject.SetActive(true);
-        MenuFight.gameObject.SetActive(false);
-        MenuVictory.gameObject.SetActive(false);
-        MenuDefeat.gameObject.SetActive(false);
-        MenuCredits.gameObject.SetActive(false);
-    }
+        public Image menuStart;
+        public Image menuFight;
+        public Image menuVictory;
+        public Image menuDefeat;    
+        public Image menuCredits;        
 
-    public void StartToFight()
-    {
-        MenuStart.gameObject.SetActive(false);
-        MenuFight.gameObject.SetActive(true);
-    }
+        void Start()
+        {
+            menuStart.gameObject.SetActive(true);
+            menuFight.gameObject.SetActive(false);
+            menuVictory.gameObject.SetActive(false);
+            menuDefeat.gameObject.SetActive(false);
+            menuCredits.gameObject.SetActive(false);
+        }
 
-    public void FightToStart()
-    {
-        MenuFight.gameObject.SetActive(false);
-        MenuStart.gameObject.SetActive(true);
-    }
+        public void StartToFight()
+        {
+            menuStart.gameObject.SetActive(false);
+            menuFight.gameObject.SetActive(true);
+        }
 
-    public void VictoryToStart()
-    {
-        MenuVictory.gameObject.SetActive(false);
-        MenuStart.gameObject.SetActive(true);
-    }
+        public void FightToStart()
+        {
+            menuFight.gameObject.SetActive(false);
+            menuStart.gameObject.SetActive(true);
+        }
 
-    public void DefeatToStart()
-    {
-        MenuDefeat.gameObject.SetActive(false);
-        MenuStart.gameObject.SetActive(true);
-    }
+        public void VictoryToStart()
+        {
+            menuVictory.gameObject.SetActive(false);
+            menuStart.gameObject.SetActive(true);
+        }
 
-    public void StartToCredit()
-    {
-        MenuStart.gameObject.SetActive(false);
-        MenuCredits.gameObject.SetActive(true);
-    }
+        public void DefeatToStart()
+        {
+            menuDefeat.gameObject.SetActive(false);
+            menuStart.gameObject.SetActive(true);
+        }
 
-    public void CreditToStart()
-    {
-        MenuCredits.gameObject.SetActive(false);
-        MenuStart.gameObject.SetActive(true);
+        public void StartToCredit()
+        {
+            menuStart.gameObject.SetActive(false);
+            menuCredits.gameObject.SetActive(true);
+        }
+
+        public void CreditToStart()
+        {
+            menuCredits.gameObject.SetActive(false);
+            menuStart.gameObject.SetActive(true);
+        }
     }
 }
+
