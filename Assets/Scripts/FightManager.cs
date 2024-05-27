@@ -18,7 +18,7 @@ namespace SlayTheHaunted
         // public Fighter cardTarget;
         
         [Header("Card")]
-        public CardList cardList;
+        public CardSelector cardSelector;
 
         [Header("Monster")]
         public Monster monster;
