@@ -3277,8 +3277,6 @@ MonoBehaviour:
   - LAttack
   - LAttack
   - LAttack
-  - LAttack
-  - LAttack
   - Defend
   - Defend
   - Defend
@@ -3287,15 +3285,15 @@ MonoBehaviour:
   - Defend
   - Defend
   - Defend
-  - Defend
-  - Defend
-  - HAttack
   - HAttack
   - HAttack
   - HAttack
   - HAttack
   draw: []
   discard: []
+  drawLimit: 5
+  deckText: {fileID: 1314214359}
+  discardText: {fileID: 1058684271}
 --- !u!1 &957808281
 GameObject:
   m_ObjectHideFlags: 0
@@ -3731,7 +3729,7 @@ MonoBehaviour:
   turnCount: 0
   turn: 0
   player: {fileID: 1800627298}
-  cardList: {fileID: 0}
+  cardSelector: {fileID: 0}
   monster: {fileID: 0}
 --- !u!1 &1070630023
 GameObject:
@@ -4113,7 +4111,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1206074028}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 931525936}
+        m_TargetAssemblyTypeName: SlayTheHaunted.CardSelector, Assembly-CSharp
+        m_MethodName: DrawCard
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1206074028
 MonoBehaviour:
   m_ObjectHideFlags: 0

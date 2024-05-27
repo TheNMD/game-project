@@ -6,11 +6,11 @@ namespace SlayTheHaunted
 {
     public class CardSelector : MonoBehaviour
     {
-        public List<string> deck = new List<string> { "LAttack", "LAttack", "LAttack", 
-                                                      "LAttack", "LAttack", "LAttack",
-                                                      "Defend", "Defend", "Defend", 
-                                                      "Defend", "Defend", "Defend",
-                                                      "HAttack", "HAttack", "HAttack" };
+        public List<string> deck = new List<string> { "LAttack", "LAttack", "LAttack", "LAttack", 
+                                                      "LAttack", "LAttack", "LAttack", "LAttack",
+                                                      "Defend", "Defend", "Defend", "Defend", 
+                                                      "Defend", "Defend", "Defend", "Defend",
+                                                      "HAttack", "HAttack", "HAttack", "HAttack" };
         public List<string> draw = new List<string> {};
         public List<string> discard = new List<string> {};
         public int drawLimit = 5;
@@ -29,11 +29,10 @@ namespace SlayTheHaunted
 
             UpdateUI();
         }
-
         public void DrawCard()
         {   
             List<string> leftOver = draw.GetRange(0, draw.Count);
-            discard.AddRange(leftOver);
+            discard.InsertRange(0, leftOver);
 
             if (deck.Count == 0)
             {
@@ -47,7 +46,6 @@ namespace SlayTheHaunted
 
             UpdateUI();
         }
-
         public static void ShuffleCard<T>(IList<T> list)
         {
             System.Random rng = new System.Random();
