@@ -23,10 +23,6 @@ namespace SlayTheHaunted
             draw = deck.GetRange(0, drawLimit);
             deck.RemoveRange(0, drawLimit);
 
-            // foreach (string ele in deck) { Debug.Log(ele); }
-            
-            foreach (string ele in draw) { Debug.Log(ele); }
-
             UpdateUI();
         }
         public void DrawCard()
