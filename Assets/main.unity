@@ -3727,10 +3727,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turnCount: 0
-  turn: 0
+  turnCountText: {fileID: 777896323}
+  playerTurn: 1
+  doneButton: {fileID: 1206074027}
   player: {fileID: 1800627298}
-  cardSelector: {fileID: 0}
-  monster: {fileID: 0}
+  cardSelector: {fileID: 931525936}
+  monster: {fileID: 1818117984}
 --- !u!1 &1070630023
 GameObject:
   m_ObjectHideFlags: 0
@@ -4112,9 +4114,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 931525936}
-        m_TargetAssemblyTypeName: SlayTheHaunted.CardSelector, Assembly-CSharp
-        m_MethodName: DrawCard
+      - m_Target: {fileID: 1059144093}
+        m_TargetAssemblyTypeName: SlayTheHaunted.FightManager, Assembly-CSharp
+        m_MethodName: ChangeTurn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
