@@ -1928,6 +1928,9 @@ MonoBehaviour:
   HPText: {fileID: 0}
   ShieldText: {fileID: 0}
   EnergyText: {fileID: 0}
+  HPValue: 0
+  ShieldValue: 0
+  EnergyValue: 0
 --- !u!114 &606713974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3184,6 +3187,7 @@ GameObject:
   - component: {fileID: 931525933}
   - component: {fileID: 931525935}
   - component: {fileID: 931525934}
+  - component: {fileID: 931525936}
   m_Layer: 7
   m_Name: CardStack
   m_TagString: Untagged
@@ -3206,7 +3210,7 @@ RectTransform:
   - {fileID: 1314214358}
   - {fileID: 893452719}
   - {fileID: 1058684270}
-  m_Father: {fileID: 1800627297}
+  m_Father: {fileID: 1031283650}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -3252,6 +3256,46 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 931525932}
   m_CullTransparentMesh: 1
+--- !u!114 &931525936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 931525932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc7a9f95884e49648b4b9501e20cbbbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deck:
+  - LAttack
+  - LAttack
+  - LAttack
+  - LAttack
+  - LAttack
+  - LAttack
+  - LAttack
+  - LAttack
+  - LAttack
+  - LAttack
+  - Defend
+  - Defend
+  - Defend
+  - Defend
+  - Defend
+  - Defend
+  - Defend
+  - Defend
+  - Defend
+  - Defend
+  - HAttack
+  - HAttack
+  - HAttack
+  - HAttack
+  - HAttack
+  draw: []
+  discard: []
 --- !u!1 &957808281
 GameObject:
   m_ObjectHideFlags: 0
@@ -3418,6 +3462,43 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1028744779}
   m_CullTransparentMesh: 1
+--- !u!1 &1031283649
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1031283650}
+  m_Layer: 7
+  m_Name: Cards
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1031283650
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1031283649}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1369478815}
+  - {fileID: 931525933}
+  m_Father: {fileID: 1059144090}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1058684269
 GameObject:
   m_ObjectHideFlags: 0
@@ -3563,6 +3644,7 @@ GameObject:
   - component: {fileID: 1059144090}
   - component: {fileID: 1059144092}
   - component: {fileID: 1059144091}
+  - component: {fileID: 1059144093}
   m_Layer: 7
   m_Name: Menu_Fight
   m_TagString: Untagged
@@ -3584,9 +3666,10 @@ RectTransform:
   - {fileID: 2095489377}
   - {fileID: 136370693}
   - {fileID: 1206074026}
+  - {fileID: 1453981764}
   - {fileID: 1818117983}
   - {fileID: 1800627297}
-  - {fileID: 1453981764}
+  - {fileID: 1031283650}
   m_Father: {fileID: 2071443467}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3633,6 +3716,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1059144089}
   m_CullTransparentMesh: 1
+--- !u!114 &1059144093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1059144089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f954c30e8415e704c9f0732181c9d943, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turnCount: 0
+  turn: 0
+  player: {fileID: 1800627298}
+  cardList: {fileID: 0}
+  monster: {fileID: 0}
 --- !u!1 &1070630023
 GameObject:
   m_ObjectHideFlags: 0
@@ -4735,7 +4835,7 @@ Transform:
   - {fileID: 872540799}
   - {fileID: 1283455041}
   - {fileID: 1094902842}
-  m_Father: {fileID: 1800627297}
+  m_Father: {fileID: 1031283650}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1413722864
@@ -4980,7 +5080,7 @@ RectTransform:
   - {fileID: 2089957032}
   - {fileID: 777896322}
   m_Father: {fileID: 1059144090}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -5758,6 +5858,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1800627297}
+  - component: {fileID: 1800627298}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -5776,17 +5877,33 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1369478815}
-  - {fileID: 931525933}
   - {fileID: 2038271366}
   m_Father: {fileID: 1059144090}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1800627298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1800627296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e8b7c3c9b3d9da4c8e200c0ccde4d80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  shield: 0
+  energy: 0
+  healthText: {fileID: 75686732}
+  shieldText: {fileID: 1360385200}
+  energyText: {fileID: 518439174}
 --- !u!1 &1818117982
 GameObject:
   m_ObjectHideFlags: 0
@@ -5796,6 +5913,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1818117983}
+  - component: {fileID: 1818117984}
   m_Layer: 7
   m_Name: Monster
   m_TagString: Untagged
@@ -5818,8 +5936,25 @@ Transform:
   - {fileID: 1329252822}
   - {fileID: 606713972}
   m_Father: {fileID: 1059144090}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1818117984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1818117982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0eb6e32ee18bb4f4b88a266fa0521774, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterName: 
+  health: 0
+  shield: 0
+  healthText: {fileID: 1339949346}
+  shieldText: {fileID: 1781643011}
 --- !u!1 &1831191611
 GameObject:
   m_ObjectHideFlags: 0
@@ -6644,7 +6779,7 @@ RectTransform:
   - {fileID: 1849595137}
   - {fileID: 518439173}
   m_Father: {fileID: 1800627297}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -6704,6 +6839,9 @@ MonoBehaviour:
   HPText: {fileID: 75686732}
   ShieldText: {fileID: 1360385200}
   EnergyText: {fileID: 518439174}
+  HPValue: 0
+  ShieldValue: 0
+  EnergyValue: 0
 --- !u!1 &2064737788
 GameObject:
   m_ObjectHideFlags: 0
@@ -7048,11 +7186,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e9ead98ee9ff0345a28b068f941d1fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MenuStart: {fileID: 461885492}
-  MenuFight: {fileID: 1059144091}
-  MenuVictory: {fileID: 2026451701}
-  MenuDefeat: {fileID: 1593890167}
-  MenuCredits: {fileID: 1944499666}
+  menuStart: {fileID: 461885492}
+  menuFight: {fileID: 1059144091}
+  menuVictory: {fileID: 2026451701}
+  menuDefeat: {fileID: 1593890167}
+  menuCredits: {fileID: 1944499666}
 --- !u!1 &2081640063
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,25 +1,28 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
+
 
 namespace SlayTheHaunted
 {
     public class FightManager : MonoBehaviour
     {
-
-        // [Header("Cards")]
-        // public List<Card> cardsDeck = new List<Card>();
-        // public List<Card> cardsInHand = new List<Card>();
-        // public List<Card> discardPile = new List<Card>();
-        // public CardUI selectedCard;
-        // public List<CardUI> cardsInHandGameObjects = new List<CardUI>();
-
-        [Header("PlayerStats")]
-        public Fighter cardTarget;
-        public Player player;
-        public int drawAmount = 5;
+        [Header("Global")]
+        public int turnCount = 0;
         public Turn turn;
         public enum Turn {Player, Enemy};
+        
+        [Header("Player")]
+        public Player player;
+        // public Fighter cardTarget;
+        
+        [Header("Card")]
+        public CardList cardList;
+
+        [Header("Monster")]
+        public Monster monster;
+
 
         // [Header("UI")]
         // public TextMeshProUGUI drawPileCountText;
@@ -41,8 +44,8 @@ namespace SlayTheHaunted
         // public GameObject gameover;
 
         private void Awake()
-        {
-            Debug.Log(player.health);
+        {   
+            // Debug.Log(monsterNames[0]);
         }
     }
 }

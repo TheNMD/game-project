@@ -13,9 +13,6 @@ namespace SlayTheHaunted
         public TextMeshProUGUI shieldText;
         public TextMeshProUGUI energyText;
 
-        // Enemy enemy;
-        // FightManager fightManager;
-
         private void Awake()
         {
             health = 100;
@@ -25,6 +22,7 @@ namespace SlayTheHaunted
             UpdateUI();
         }
 
+        // PlayerStats
         public void SetValue(string stat, int value)
         {
             switch (stat)
@@ -42,6 +40,7 @@ namespace SlayTheHaunted
                     Debug.Log("PlayerStats Error");
                     break;
             }
+            
             UpdateUI();
         }
         void UpdateUI()
