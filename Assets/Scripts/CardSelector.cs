@@ -6,11 +6,11 @@ namespace SlayTheHaunted
 {
     public class CardSelector : MonoBehaviour
     {
-        public List<string> deck = new List<string> { "LAttack", "LAttack", "LAttack", "LAttack", 
-                                                      "LAttack", "LAttack", "LAttack", "LAttack",
-                                                      "Defend", "Defend", "Defend", "Defend", 
-                                                      "Defend", "Defend", "Defend", "Defend",
-                                                      "HAttack", "HAttack", "HAttack", "HAttack" };
+        public List<string> deck = new List<string> { "LAttack", "LAttack", "LAttack", 
+                                                      "LAttack", "LAttack", "LAttack",
+                                                      "Defend", "Defend", "Defend", 
+                                                      "Defend", "Defend", "Defend",
+                                                      "HAttack", "HAttack", "HAttack" };
         public List<string> draw = new List<string> {};
         public List<string> discard = new List<string> {};
         public int drawLimit = 5;
@@ -25,20 +25,23 @@ namespace SlayTheHaunted
 
             // foreach (string ele in deck) { Debug.Log(ele); }
             
-            // foreach (string ele in draw) { Debug.Log(ele); }
+            foreach (string ele in draw) { Debug.Log(ele); }
 
             UpdateUI();
         }
 
         public void DrawCard()
-        {
+        {   
+            List<string> leftOver = draw.GetRange(0, draw.Count);
+            discard.AddRange(leftOver);
+
             if (deck.Count == 0)
             {
                 deck = discard.GetRange(0, discard.Count);
                 ShuffleCard(deck);
+                discard.RemoveRange(0, discard.Count);
             }
-            List<string> leftOver = draw.GetRange(0, draw.Count);
-            discard.AddRange(leftOver);
+
             draw = deck.GetRange(0, drawLimit);
             deck.RemoveRange(0, drawLimit);
 
