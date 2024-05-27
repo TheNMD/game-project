@@ -1,7 +1,8 @@
 using System;
-using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 
 namespace SlayTheHaunted
@@ -10,12 +11,12 @@ namespace SlayTheHaunted
     {
         [Header("Global")]
         public int turnCount = 0;
-        public Turn turn;
-        public enum Turn {Player, Enemy};
+        public TextMeshProUGUI turnCountText;
+        public bool playerTurn = true;
+        public Button doneButton;
         
         [Header("Player")]
         public Player player;
-        // public Fighter cardTarget;
         
         [Header("Card")]
         public CardSelector cardSelector;
@@ -23,29 +24,19 @@ namespace SlayTheHaunted
         [Header("Monster")]
         public Monster monster;
 
-
-        // [Header("UI")]
-        // public TextMeshProUGUI drawPileCountText;
-        // public TextMeshProUGUI discardPileCountText;
-        // public TextMeshProUGUI energyText;
-        // // public Transform topParent;
-        // // public Transform enemyParent;
-        
-        // [Header("Enemies")]
-        // public List<Enemy> enemies = new List<Enemy>();
-        // List<Fighter> enemyFighters = new List<Fighter>();
-        // public GameObject[] possibleEnemies;
-
-
-        // CardAction cardActions;
-        // // PlayerStatsUI playerStatsUI;
-        // public Animator banner;
-        // public TMP_Text turnText;
-        // public GameObject gameover;
-
         private void Awake()
         {   
-            // Debug.Log(monsterNames[0]);
+
         }
+        public void ChangeTurn()
+        {
+            turnCount += 1;
+            doneButton.interactable = false;
+            // TODO MonsterAction
+            doneButton.interactable = true;
+            
+            UpdateUI();
+        }
+        void UpdateUI() { turnCountText.text = turnCount.ToString(); }
     }
 }
