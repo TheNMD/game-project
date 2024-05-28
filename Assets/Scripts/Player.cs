@@ -31,7 +31,7 @@ namespace SlayTheHaunted
             {
                 health = 0; 
                 dead = true;
-                Debug.Log($"Player is dead!");
+                Debug.Log("Player is dead!");
             }
             UpdateUI();
         }

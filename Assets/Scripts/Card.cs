@@ -1,4 +1,8 @@
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace SlayTheHaunted
 {
@@ -6,17 +10,17 @@ namespace SlayTheHaunted
     {
         public string cardTitle;
         public string cardDescription;
-        public int cardAmount;
         public int cardCost;
-        public int cardEffect;
         public Sprite cardIcon;
-        public CardType cardType;
-        public enum CardType{Attack, Defend}
-        public CardTargetType cardTargetType;
-        public enum CardTargetType{Self, Enemy};
-
+        public string cardTarget;
+        public void setCardEffect(string title, string description, int cost, string target)
+        {
+            cardTitle = title;
+            cardDescription = description;
+            cardCost = cost;
+            cardTarget = target;
+        }
         public int GetCardCostAmount() { return cardCost; }
-        public int GetCardEffectAmount() { return cardEffect; }
         public string GetCardDescriptionAmount() { return cardDescription; }
     }
 }

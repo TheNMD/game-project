@@ -11,30 +11,25 @@ namespace SlayTheHaunted
                                                       "Defend", "Defend", "Defend", "Defend", 
                                                       "Defend", "Defend", "Defend", "Defend",
                                                       "HAttack", "HAttack", "HAttack", "HAttack" };
-        public List<string> draw = new List<string> {};
+        public List<string> hand = new List<string> {};
         public List<string> discard = new List<string> {};
         public int drawLimit = 5;
        public TextMeshProUGUI deckText;
        public TextMeshProUGUI discardText;  
-
-        private void Awake() 
-        {   
-            ShuffleCard(deck);
-            draw = deck.GetRange(0, drawLimit);
-            deck.RemoveRange(0, drawLimit);
-            UpdateUI();
-        }
         public void DrawCard()
         {   
-            List<string> leftOver = draw.GetRange(0, draw.Count);
-            discard.InsertRange(0, leftOver);
+            if (hand.Count != 0)
+            {
+                List<string> leftOver = hand.GetRange(0, hand.Count);
+                discard.InsertRange(0, leftOver);
+            }
             if (deck.Count == 0)
             {
                 deck = discard.GetRange(0, discard.Count);
                 ShuffleCard(deck);
                 discard.RemoveRange(0, discard.Count);
             }
-            draw = deck.GetRange(0, drawLimit);
+            hand = deck.GetRange(0, drawLimit);
             deck.RemoveRange(0, drawLimit);
             UpdateUI();
         }
@@ -50,6 +45,45 @@ namespace SlayTheHaunted
                 list[k] = list[n];
                 list[n] = value;
             }
+        }
+        public List<Card> GetDeck()
+        {
+            List<Card> cards = new List<Card> {};
+            foreach (string cardName in deck)
+            {
+                Card newCard = ScriptableObject.CreateInstance<Card>();
+                if (cardName == "LAttack") { newCard.setCardEffect("LAttack", "Deal 10 damage.", 1, "Enemy"); }
+                else if (cardName == "HAttack") { newCard.setCardEffect("HAttack", "Deal 25 damage.", 2, "Enemy"); }
+                else if (cardName == "Defend") { newCard.setCardEffect("Defend", "Block 10 damage.", 1, "Enemy"); }
+                cards.Add(newCard);
+            }
+            return cards;
+        }
+        public List<Card> GetHand()
+        {
+            List<Card> cards = new List<Card> {};
+            foreach (string cardName in hand)
+            {
+                Card newCard = ScriptableObject.CreateInstance<Card>();
+                if (cardName == "LAttack") { newCard.setCardEffect("LAttack", "Deal 10 damage.", 1, "Enemy"); }
+                else if (cardName == "HAttack") { newCard.setCardEffect("HAttack", "Deal 25 damage.", 2, "Enemy"); }
+                else if (cardName == "Defend") { newCard.setCardEffect("Defend", "Block 10 damage.", 1, "Enemy"); }
+                cards.Add(newCard);
+            }
+            return cards;
+        }
+        public List<Card> GetDiscard()
+        {
+            List<Card> cards = new List<Card> {};
+            foreach (string cardName in discard)
+            {
+                Card newCard = ScriptableObject.CreateInstance<Card>();
+                if (cardName == "LAttack") { newCard.setCardEffect("LAttack", "Deal 10 damage.", 1, "Enemy"); }
+                else if (cardName == "HAttack") { newCard.setCardEffect("HAttack", "Deal 25 damage.", 2, "Enemy"); }
+                else if (cardName == "Defend") { newCard.setCardEffect("Defend", "Block 10 damage.", 1, "Enemy"); }
+                cards.Add(newCard);
+            }
+            return cards;
         }
         // Update CardStack UI 
         void UpdateUI()
