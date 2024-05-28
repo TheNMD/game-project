@@ -30,6 +30,15 @@ namespace SlayTheHaunted
             round = 1;
             turn = "Player";
             UpdateUI();
+            PlayerTurn();
+        }
+        public void PlayerTurn()
+        {
+
+        }
+        public void MonsterTurn()
+        {
+            
         }
         public void ChangeTurn()
         {
@@ -37,10 +46,12 @@ namespace SlayTheHaunted
             UpdateUI();
             doneButton.interactable = false;
             // TODO MonsterAction
+            MonsterTurn();
             doneButton.interactable = true;
             round += 1;
             turn = "Player";
             UpdateUI();
+            PlayerTurn();
         }
         void UpdateUI() 
         { 

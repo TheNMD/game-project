@@ -1882,7 +1882,6 @@ GameObject:
   - component: {fileID: 606713972}
   - component: {fileID: 606713975}
   - component: {fileID: 606713974}
-  - component: {fileID: 606713973}
   m_Layer: 7
   m_Name: MonsterStats
   m_TagString: Untagged
@@ -1913,18 +1912,6 @@ RectTransform:
   m_AnchoredPosition: {x: 10, y: 5}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &606713973
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 606713971}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3b0562ec0ddecf4ea24f6888e2cda66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &606713974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4760,10 +4747,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2071443468}
-        m_TargetAssemblyTypeName: MenuSwitcher, Assembly-CSharp
-        m_MethodName: FightToStart
-        m_Mode: 1
+      - m_Target: {fileID: 1800627298}
+        m_TargetAssemblyTypeName: SlayTheHaunted.Player, Assembly-CSharp
+        m_MethodName: TakeDamage
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -6176,6 +6163,7 @@ MonoBehaviour:
   health: 0
   shield: 0
   energy: 0
+  dead: 0
   healthText: {fileID: 75686732}
   shieldText: {fileID: 1360385200}
   energyText: {fileID: 518439174}
@@ -7028,7 +7016,6 @@ GameObject:
   - component: {fileID: 2038271366}
   - component: {fileID: 2038271368}
   - component: {fileID: 2038271367}
-  - component: {fileID: 2038271369}
   m_Layer: 7
   m_Name: PlayerStats
   m_TagString: Untagged
@@ -7099,18 +7086,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2038271365}
   m_CullTransparentMesh: 1
---- !u!114 &2038271369
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2038271365}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3b0562ec0ddecf4ea24f6888e2cda66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2064737788
 GameObject:
   m_ObjectHideFlags: 0

@@ -22,7 +22,7 @@ namespace SlayTheHaunted
             dead = false;
             UpdateUI();
         }
-        public void TakeDamage(int amount = 30)
+        public void TakeDamage(int amount)
         {
             if(shield > 0) { amount = BlockDamage(amount); }
             health -= amount;
