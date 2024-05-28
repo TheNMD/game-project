@@ -22,13 +22,14 @@ namespace SlayTheHaunted
             dead = false;
             UpdateUI();
         }
-        public void TakeDamage(int amount = 5)
+        public void TakeDamage(int amount = 30)
         {
             if(shield > 0) { amount = BlockDamage(amount); }
-            health-=amount;
+            health -= amount;
             Debug.Log($"Player received {amount} damage!");
             if (health <= 0) 
-            { 
+            {
+                health = 0; 
                 dead = true;
                 Debug.Log($"Player is dead!");
             }
