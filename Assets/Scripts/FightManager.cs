@@ -39,9 +39,8 @@ namespace SlayTheHaunted
         public void PlayerTurn()
         {
             cardSelector.DrawCard();
-            List<Card> playerDeck = cardSelector.GetDeck();
             List<Card> playerHand = cardSelector.GetHand();
-            List<Card> playerDiscard = cardSelector.GetDiscard();
+            List<CardUI> playerHandUI = cardSelector.GetHandUI(playerHand);
             for (int i = 0; i < playerHand.Count; i++) 
             { Debug.Log($"Card {i + 1}: {playerHand[i].cardTitle}"); }
         }
@@ -51,7 +50,7 @@ namespace SlayTheHaunted
         }
         // public void DisplayCardInHand(Card card)
         // {
-        //     CardUI cardUI = cardsInHandGameObjects[cardsInHand.Count-1];
+        //     CardUI cardUI = hand[hand.Count - 1];
         //     cardUI.LoadCard(card);
         //     cardUI.gameObject.SetActive(true);
         // }
