@@ -22,7 +22,7 @@ namespace SlayTheHaunted
         
         [Header("Card")]
         public CardSelector cardSelector;
-        // public CardUI selectedCard;
+        public CardUI selectedCard;
         // public List<CardUI> hand = new List<CardUI>();
 
         [Header("Monster")]

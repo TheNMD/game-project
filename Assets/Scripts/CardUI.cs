@@ -23,25 +23,25 @@ namespace SlayTheHaunted
             // gameObject.GetComponent<RectTransform>().localScale = new Vector3(1,1,1);
             cardImage.sprite = image;
         }
-        // public void SelectCard()
-        // {
-        //     Debug.Log("Card is selected");
-        //     fightManager.selectedCard = this;
-        // }
-        // public void DeselectCard()
-        // {
-        //     Debug.Log("Card is deselected");
-        //     fightManager.selectedCard = null;
-        //     animator.Play("HoverOffCard");
-        // }
-        // public void HoverCard()
-        // {
-        //     if(fightManager.selectedCard == null) { animator.Play("HoverOnCard"); }
-        // }
-        // public void DropCard()
-        // {
-        //     if(fightManager.selectedCard == null) { animator.Play("HoverOffCard"); }
-        // }
+        public void SelectCard()
+        {
+            Debug.Log("Card is selected");
+            fightManager.selectedCard = this;
+        }
+        public void DeselectCard()
+        {
+            Debug.Log("Card is deselected");
+            fightManager.selectedCard = null;
+            animator.Play("HoverOffCard");
+        }
+        public void HoverCard()
+        {
+            if(fightManager.selectedCard == null) { animator.Play("Hover"); }
+        }
+        public void DropCard()
+        {
+            if(fightManager.selectedCard == null) { animator.Play("Idle"); }
+        }
         // public void HandleEndDrag()
         // {
         //     fightManager.PlayCard(this);
