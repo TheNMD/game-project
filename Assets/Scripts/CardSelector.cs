@@ -22,24 +22,20 @@ namespace SlayTheHaunted
             ShuffleCard(deck);
             draw = deck.GetRange(0, drawLimit);
             deck.RemoveRange(0, drawLimit);
-
             UpdateUI();
         }
         public void DrawCard()
         {   
             List<string> leftOver = draw.GetRange(0, draw.Count);
             discard.InsertRange(0, leftOver);
-
             if (deck.Count == 0)
             {
                 deck = discard.GetRange(0, discard.Count);
                 ShuffleCard(deck);
                 discard.RemoveRange(0, discard.Count);
             }
-
             draw = deck.GetRange(0, drawLimit);
             deck.RemoveRange(0, drawLimit);
-
             UpdateUI();
         }
         public static void ShuffleCard<T>(IList<T> list)

@@ -10,9 +10,10 @@ namespace SlayTheHaunted
     public class FightManager : MonoBehaviour
     {
         [Header("Global")]
-        public int turnCount = 0;
-        public TextMeshProUGUI turnCountText;
-        public bool playerTurn = true;
+        public int round;
+        public TextMeshProUGUI roundText;
+        public string turn;
+        public TextMeshProUGUI turnText;
         public Button doneButton;
         
         [Header("Player")]
@@ -26,17 +27,25 @@ namespace SlayTheHaunted
 
         private void Awake()
         {   
-
+            round = 1;
+            turn = "Player";
+            UpdateUI();
         }
         public void ChangeTurn()
         {
-            turnCount += 1;
+            turn = "Monster";
+            UpdateUI();
             doneButton.interactable = false;
             // TODO MonsterAction
             doneButton.interactable = true;
-            
+            round += 1;
+            turn = "Player";
             UpdateUI();
         }
-        void UpdateUI() { turnCountText.text = turnCount.ToString(); }
+        void UpdateUI() 
+        { 
+            roundText.text = "Round:   " + round.ToString();
+            turnText.text = turn.ToString() + "'s Turn"; 
+        }
     }
 }

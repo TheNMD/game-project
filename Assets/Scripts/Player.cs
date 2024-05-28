@@ -18,7 +18,6 @@ namespace SlayTheHaunted
             health = 100;
             shield = 0;
             energy = 3;
-
             UpdateUI();
         }
 

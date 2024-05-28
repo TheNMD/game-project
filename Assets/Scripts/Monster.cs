@@ -17,7 +17,6 @@ namespace SlayTheHaunted
             monsterName = "Ghost";
             health = 30;
             shield = 0;
-             
             UpdateUI();
         }
 
