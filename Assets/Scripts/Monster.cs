@@ -20,24 +20,7 @@ namespace SlayTheHaunted
             UpdateUI();
         }
 
-        // MonsterStats
-        public void SetValue(string stat, int value)
-        {
-            switch (stat)
-            {
-                case "health": 
-                    health = value;
-                    break;
-                case "shield": 
-                    shield = value;
-                    break;
-                default:
-                    Debug.Log("MonsterStats Error");
-                    break;
-            }
-            
-            UpdateUI();
-        }
+        // Update MonsterStats UI 
         void UpdateUI()
         {
             healthText.text = health.ToString();

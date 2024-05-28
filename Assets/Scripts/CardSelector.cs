@@ -51,7 +51,7 @@ namespace SlayTheHaunted
                 list[n] = value;
             }
         }
-        // CardStats
+        // Update CardStack UI 
         void UpdateUI()
         {
             deckText.text = deck.Count.ToString();

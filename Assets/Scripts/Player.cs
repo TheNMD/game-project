@@ -8,6 +8,7 @@ namespace SlayTheHaunted
         public int health;
         public int shield;
         public int energy;
+        public bool dead;
 
         public TextMeshProUGUI healthText;
         public TextMeshProUGUI shieldText;
@@ -18,30 +19,38 @@ namespace SlayTheHaunted
             health = 100;
             shield = 0;
             energy = 3;
+            dead = false;
             UpdateUI();
         }
-
-        // PlayerStats
-        public void SetValue(string stat, int value)
+        public void TakeDamage(int amount = 5)
         {
-            switch (stat)
-            {
-                case "health": 
-                    health = value;
-                    break;
-                case "shield": 
-                    shield = value;
-                    break;
-                case "energy": 
-                    energy = value;
-                    break;
-                default:
-                    Debug.Log("PlayerStats Error");
-                    break;
+            if(shield > 0) { amount = BlockDamage(amount); }
+            health-=amount;
+            Debug.Log($"Player received {amount} damage!");
+            if (health <= 0) 
+            { 
+                dead = true;
+                Debug.Log($"Player is dead!");
             }
-            
             UpdateUI();
         }
+        private int BlockDamage(int amount)
+        {
+            // Block all
+            if(shield >= amount)
+            {
+                shield -= amount;
+                amount = 0;
+            }
+            // Can't block all
+            else
+            {
+                amount -= shield;
+                shield = 0;
+            }
+            return amount;
+        }
+        // Update PlayerStats UI
         void UpdateUI()
         {
             healthText.text = health.ToString();
