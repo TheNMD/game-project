@@ -27,18 +27,19 @@ namespace SlayTheHaunted
         {
             Debug.Log("Card is selected");
             fightManager.selectedCard = this;
+            animator.Play("Select");
         }
         public void DeselectCard()
         {
             Debug.Log("Card is deselected");
             fightManager.selectedCard = null;
-            animator.Play("HoverOffCard");
+            animator.Play("Hover");
         }
-        public void HoverCard()
+        public void HoverOnCard()
         {
             if(fightManager.selectedCard == null) { animator.Play("Hover"); }
         }
-        public void DropCard()
+        public void HoverOffCard()
         {
             if(fightManager.selectedCard == null) { animator.Play("Idle"); }
         }
