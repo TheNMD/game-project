@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEditor;
 
 namespace SlayTheHaunted
 {
@@ -14,6 +15,7 @@ namespace SlayTheHaunted
         public TextMeshProUGUI turnText;
         public Button doneButton;
         public ActionPerformer performer;
+        public MenuSwitcher menuSwitcher;
 
         [Header("Player")]
         public Player player;
@@ -26,9 +28,11 @@ namespace SlayTheHaunted
 
         [Header("Monster")]
         public Monster monster;
+        public List<string> monsterAction;
 
         private void Awake()
         {   
+            menuSwitcher = FindObjectOfType<MenuSwitcher>();
             performer = FindObjectOfType<ActionPerformer>();
             player = FindObjectOfType<Player>();
             cardSelector = FindObjectOfType<CardSelector>();
@@ -43,25 +47,25 @@ namespace SlayTheHaunted
         public void PlayerTurn()
         {
             player.ReEnergize();
-            player.DepleteBlock();
+            // player.DepleteBlock();
             cardSelector.DrawCard();
             playerHand = cardSelector.GetHand();
             playerHandUI = cardSelector.GetHandUI(playerHand);
         }
         public void MonsterIntention()
         {
-            monster.DepleteBlock();
-            monster.DecideAction();
+            monsterAction = monster.DecideAction();
         }
         public void MonsterTurn()
         {
-
+            // monster.DepleteBlock();
+            performer.PerformAction(monsterAction[0], "Player", int.Parse(monsterAction[1]));
         }
         public void PlayCard(CardUI cardUI)
         {
             if(player.energy < cardUI.cardContent.cardCost) 
             { 
-                Debug.Log($"Not enough energy to play!");
+                Debug.Log("Not enough energy to play!");
             }
             else
             {
@@ -83,8 +87,41 @@ namespace SlayTheHaunted
                 cardUI.gameObject.SetActive(false);
             }
             MonsterTurn();
+            if (player.dead) 
+            { 
+                ResetGame();
+                menuSwitcher.FightToDefeat(); 
+            }
             doneButton.interactable = true;
             round += 1;
+            turn = "Player";
+            UpdateUI();
+            MonsterIntention();
+            PlayerTurn();
+            if (monster.dead) 
+            { 
+                ResetGame();
+                menuSwitcher.FightToVictory(); 
+            }
+        }
+        public void ResetGame()
+        {
+            player.health = 50;
+            player.shield = 0;
+            player.dead = false;
+            player.UpdateUI();
+
+            playerHand = new List<Card> {};
+            playerHandUI = new List<CardUI> {};
+
+            monster.health = 150;
+            monster.shield = 0;
+            monster.dead = false;
+            monster.UpdateUI();
+            
+            cardSelector.ResetCard();
+
+            round = 0;
             turn = "Player";
             UpdateUI();
             MonsterIntention();

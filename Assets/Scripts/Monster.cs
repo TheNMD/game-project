@@ -12,13 +12,13 @@ namespace SlayTheHaunted
         public int shield;
         public bool dead;
         public List<string> actionList = new List<string> {"LAttack", "LAttack", "LAttack", "LAttack", "LAttack",
-                                                           "HAttack", "HAttack", "Defend", "Defend", "Defend"};
+                                                           "LAttack", "LAttack", "LAttack", "HAttack", "HAttack",
+                                                           "Defend", "Defend", "Defend", "Defend", "Defend"};
         public GameObject lattack;
         public GameObject hattack;
         public GameObject defend;
         public TextMeshProUGUI healthText;
         public TextMeshProUGUI shieldText;
-
         private void Awake() 
         {
             monsterName = "Ghost";
@@ -27,28 +27,46 @@ namespace SlayTheHaunted
             dead = false;
             UpdateUI();
         }
-        public void DecideAction()
+        public List<string> DecideAction()
         {
-            System.Random random = new System.Random();
-            int randomIndex = random.Next(actionList.Count);
-            string action = actionList[randomIndex];
+            ShuffleAction(actionList);
+            string action = actionList[0];
+            string value = "0";
             switch (action)
             {
                 case "LAttack":
                     lattack.SetActive(true);
                     hattack.SetActive(false);
                     defend.SetActive(false);
+                    value = "15";
                     break;
                 case "HAttack":
                     lattack.SetActive(false);
                     hattack.SetActive(true);
                     defend.SetActive(false);
+                    value = "30";
                     break;
                 case "Defend":
                     lattack.SetActive(false);
                     hattack.SetActive(false);
                     defend.SetActive(true);
+                    value = "20";
                     break;
+            }
+            List<string> monsterIntention = new List<string> {action, value};
+            return monsterIntention;
+        }
+        public static void ShuffleAction<T>(IList<T> list)
+        {
+            System.Random rng = new System.Random();
+            int n = list.Count;
+            while (n > 1)
+            {
+                n--;
+                int k = rng.Next(n + 1);
+                T value = list[k];
+                list[k] = list[n];
+                list[n] = value;
             }
         }
         public void TakeDamage(int amount)
@@ -91,7 +109,7 @@ namespace SlayTheHaunted
             UpdateUI();
         }
         // Update MonsterStats UI 
-        void UpdateUI()
+        public void UpdateUI()
         {
             healthText.text = health.ToString();
             shieldText.text = shield.ToString();

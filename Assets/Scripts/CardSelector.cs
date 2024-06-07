@@ -43,6 +43,17 @@ namespace SlayTheHaunted
             if (playedCardsThisRound < 6) { playedCardsThisRound += 1; }
             discardText.text = (discard.Count + playedCardsThisRound).ToString();
         }
+        public void ResetCard()
+        {   
+            deck = new List<string> { "LAttack", "LAttack", "LAttack", "LAttack", 
+                                      "LAttack", "LAttack", "LAttack", "LAttack",
+                                      "Defend", "Defend", "Defend", "Defend", 
+                                      "Defend", "Defend", "Defend", "Defend",
+                                      "HAttack", "HAttack", "HAttack", "HAttack" };
+            hand = new List<string> {};
+            discard = new List<string> {};
+            ShuffleCard(deck);
+        }
         public static void ShuffleCard<T>(IList<T> list)
         {
             System.Random rng = new System.Random();

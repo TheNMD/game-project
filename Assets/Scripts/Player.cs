@@ -72,7 +72,7 @@ namespace SlayTheHaunted
             UpdateUI();
         }
         // Update PlayerStats UI
-        void UpdateUI()
+        public void UpdateUI()
         {
             healthText.text = health.ToString();
             shieldText.text = shield.ToString();
