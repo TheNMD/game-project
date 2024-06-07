@@ -13,9 +13,16 @@ namespace SlayTheHaunted
         [Header("Global")]
         public int round;
         public TextMeshProUGUI roundText;
-        public string turn;
         public TextMeshProUGUI turnText;
         public Button doneButton;
+
+        [Header("Stats")]
+        public int maxEnergy = 3;
+        public Turn turn;
+        public enum Turn {Player,Monster};
+
+        [Header("UI")]
+        public TMP_Text energyText;
         
         [Header("Player")]
         public Player player;
@@ -27,12 +34,14 @@ namespace SlayTheHaunted
 
         [Header("Monster")]
         public Monster monster;
+        public Animator banner;
 
         private void Awake()
         {   
             cardSelector = FindObjectOfType<CardSelector>();
             round = 1;
-            turn = "Player";
+            // Set player turn
+            turn = Turn.Player;
             UpdateUI();
             PlayerTurn();
         }
@@ -41,12 +50,19 @@ namespace SlayTheHaunted
             cardSelector.DrawCard();
             List<Card> playerHand = cardSelector.GetHand();
             List<CardUI> playerHandUI = cardSelector.GetHandUI(playerHand);
+            
             for (int i = 0; i < playerHand.Count; i++) 
             { Debug.Log($"Card {i + 1}: {playerHand[i].cardTitle}"); }
+
+            doneButton.onClick.AddListener(ChangeTurn);
         }
         public void MonsterTurn()
         {
-            
+            // sleep for 1 second
+            Debug.Log("Monster is attacking...");
+            System.Threading.Thread.Sleep(600);
+            Debug.Log("Monster Turn Over");
+            ChangeTurn();
         }
         // public void DisplayCardInHand(Card card)
         // {
@@ -74,21 +90,53 @@ namespace SlayTheHaunted
         // }
         public void ChangeTurn()
         {
-            turn = "Monster";
-            UpdateUI();
-            doneButton.interactable = false;
-            // TODO MonsterAction
-            MonsterTurn();
-            doneButton.interactable = true;
-            round += 1;
-            turn = "Player";
-            UpdateUI();
-            PlayerTurn();
+            // Player turn to monster turn
+            if(turn==Turn.Player)
+            {
+                Debug.Log("Player Turn Over");
+                turn = Turn.Monster;
+                doneButton.interactable = false;
+                UpdateUI();
+                // TODO MonsterAction
+                MonsterTurn();
+            }
+            else
+            // Monster turn to player turn
+            {
+                // Monster display intent
+                monster.DisplayIntent();
+                turn = Turn.Player;
+
+                // Reset player block
+                player.shield=0;
+                // player.fighterHealthBar.DisplayBlock(0);
+                player.energy=maxEnergy;
+                energyText.text=player.energy.ToString();
+
+                // Update to player UI
+                doneButton.interactable = true;
+                round += 1;
+                UpdateUI();
+                PlayerTurn();
+            }
         }
         void UpdateUI() 
         { 
-            roundText.text = "Round:   " + round.ToString();
-            turnText.text = turn.ToString() + "'s Turn"; 
+            if(turn == Turn.Player)
+            {
+                roundText.text = "Round:   " + round.ToString();
+            }
+
+            turnText.text = turn.ToString() + "'s Turn";
+
+            // if(turn == Turn.Player)
+            // {
+            //     banner.Play("bannerIn");
+            // } 
+            // else if(turn == Turn.Monster)
+            // {
+            //     banner.Play("bannerOut");
+            // }
         }
     }
 }

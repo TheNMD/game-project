@@ -56,5 +56,10 @@ namespace SlayTheHaunted
             healthText.text = health.ToString();
             shieldText.text = shield.ToString();
         }
+        // Display Intent
+        public void DisplayIntent()
+        {
+            Debug.Log("Monster will attack next turn!");
+        }
     }
 }
