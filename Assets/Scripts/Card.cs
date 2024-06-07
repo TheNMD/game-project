@@ -12,7 +12,7 @@ namespace SlayTheHaunted
         public string cardDescription;
         public int cardCost;
         public string cardTarget;
-        public void setCard(string title, string description, int cost, string target)
+        public void SetCard(string title, string description, int cost, string target)
         {
             cardTitle = title;
             cardDescription = description;

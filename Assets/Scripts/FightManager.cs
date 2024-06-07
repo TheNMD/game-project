@@ -19,11 +19,11 @@ namespace SlayTheHaunted
         
         [Header("Player")]
         public Player player;
-        
+        List<Card> playerHand;
+        List<CardUI> playerHandUI;
         [Header("Card")]
         public CardSelector cardSelector;
         public CardUI selectedCard;
-        // public List<CardUI> hand = new List<CardUI>();
 
         [Header("Monster")]
         public Monster monster;
@@ -31,6 +31,8 @@ namespace SlayTheHaunted
         private void Awake()
         {   
             cardSelector = FindObjectOfType<CardSelector>();
+            player = FindObjectOfType<Player>();
+
             round = 1;
             turn = "Player";
             UpdateUI();
@@ -39,44 +41,39 @@ namespace SlayTheHaunted
         public void PlayerTurn()
         {
             cardSelector.DrawCard();
-            List<Card> playerHand = cardSelector.GetHand();
-            List<CardUI> playerHandUI = cardSelector.GetHandUI(playerHand);
-            for (int i = 0; i < playerHand.Count; i++) 
-            { Debug.Log($"Card {i + 1}: {playerHand[i].cardTitle}"); }
+            playerHand = cardSelector.GetHand();
+            playerHandUI = cardSelector.GetHandUI(playerHand);
+            player.ReEnergize(3);
         }
         public void MonsterTurn()
         {
             
         }
-        // public void DisplayCardInHand(Card card)
-        // {
-        //     CardUI cardUI = hand[hand.Count - 1];
-        //     cardUI.LoadCard(card);
-        //     cardUI.gameObject.SetActive(true);
-        // }
-        // public void PlayCard(CardUI cardUI)
-        // {
-        //     //Debug.Log("played card");
-        //     //GoblinNob is enraged
-        //     if(cardUI.card.cardType!=Card.CardType.Attack&&enemies[0].GetComponent<Fighter>().enrage.buffValue>0)
-        //         enemies[0].GetComponent<Fighter>().AddBuff(Buff.Type.strength, enemies[0].GetComponent<Fighter>().enrage.buffValue);
-
-        //     cardActions.PerformAction(cardUI.card, cardTarget);
-
-        //     energy-=cardUI.card.GetCardCostAmount();
-        //     energyText.text=energy.ToString();
-
-        //     Instantiate(cardUI.discardEffect, cardUI.transform.position, Quaternion.identity, topParent);
-        //     selectedCard = null;
-        //     cardUI.gameObject.SetActive(false);
-        //     cardsInHand.Remove(cardUI.card);
-        //     DiscardCard(cardUI.card);
-        // }
+        public void PlayCard(CardUI cardUI)
+        {
+            if(player.energy < cardUI.cardContent.cardCost) 
+            { 
+                Debug.Log($"Not enough energy to play!");
+            }
+            else
+            {
+                player.SpendEnergy(cardUI.cardContent.cardCost);
+                cardSelector.RemoveCard();
+                cardUI.gameObject.SetActive(false);
+                selectedCard = null;
+            }
+            // cardActions.PerformAction(cardUI.card, cardTarget);
+        }
         public void ChangeTurn()
         {
             turn = "Monster";
             UpdateUI();
             doneButton.interactable = false;
+            foreach (CardUI cardUI in playerHandUI)
+            {
+                cardSelector.RemoveCard();
+                cardUI.gameObject.SetActive(false);
+            }
             // TODO MonsterAction
             MonsterTurn();
             doneButton.interactable = true;

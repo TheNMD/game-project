@@ -51,6 +51,16 @@ namespace SlayTheHaunted
             }
             return amount;
         }
+        public void ReEnergize(int amount)
+        {
+            energy = amount;
+            UpdateUI();
+        }
+        public void SpendEnergy(int amount)
+        {
+            energy -= amount;
+            UpdateUI();
+        }
         // Update PlayerStats UI
         void UpdateUI()
         {

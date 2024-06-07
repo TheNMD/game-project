@@ -1715,7 +1715,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f954e1dcefa789848b2ca5789a94fbea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  card: {fileID: 0}
+  cardContent: {fileID: 0}
+  cardIdx: 0
   cardImage: {fileID: 1436109168}
 --- !u!95 &461189559
 Animator:
@@ -1804,6 +1805,38 @@ MonoBehaviour:
         - m_Target: {fileID: 461189558}
           m_TargetAssemblyTypeName: SlayTheHaunted.CardUI, Assembly-CSharp
           m_MethodName: DeselectCard
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 13
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 461189558}
+          m_TargetAssemblyTypeName: SlayTheHaunted.CardUI, Assembly-CSharp
+          m_MethodName: HandleDrag
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 14
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 461189558}
+          m_TargetAssemblyTypeName: SlayTheHaunted.CardUI, Assembly-CSharp
+          m_MethodName: HandleEndDrag
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -2673,7 +2706,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f954e1dcefa789848b2ca5789a94fbea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  card: {fileID: 0}
+  cardContent: {fileID: 0}
+  cardIdx: 0
   cardImage: {fileID: 372031896}
 --- !u!114 &689754100
 MonoBehaviour:
@@ -2743,6 +2777,38 @@ MonoBehaviour:
         - m_Target: {fileID: 689754099}
           m_TargetAssemblyTypeName: SlayTheHaunted.CardUI, Assembly-CSharp
           m_MethodName: DeselectCard
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 13
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 689754099}
+          m_TargetAssemblyTypeName: SlayTheHaunted.CardUI, Assembly-CSharp
+          m_MethodName: HandleDrag
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 14
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 689754099}
+          m_TargetAssemblyTypeName: SlayTheHaunted.CardUI, Assembly-CSharp
+          m_MethodName: HandleEndDrag
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -3605,7 +3671,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f954e1dcefa789848b2ca5789a94fbea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  card: {fileID: 0}
+  cardContent: {fileID: 0}
+  cardIdx: 0
   cardImage: {fileID: 162102453}
 --- !u!95 &856757731
 Animator:
@@ -3694,6 +3761,38 @@ MonoBehaviour:
         - m_Target: {fileID: 856757730}
           m_TargetAssemblyTypeName: SlayTheHaunted.CardUI, Assembly-CSharp
           m_MethodName: DeselectCard
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 13
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 856757730}
+          m_TargetAssemblyTypeName: SlayTheHaunted.CardUI, Assembly-CSharp
+          m_MethodName: HandleDrag
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 14
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 856757730}
+          m_TargetAssemblyTypeName: SlayTheHaunted.CardUI, Assembly-CSharp
+          m_MethodName: HandleEndDrag
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -4266,6 +4365,7 @@ MonoBehaviour:
   drawLimit: 5
   deckText: {fileID: 1314214359}
   discardText: {fileID: 1058684271}
+  playedCardsThisRound: 0
 --- !u!1 &1058684269
 GameObject:
   m_ObjectHideFlags: 0
@@ -6833,7 +6933,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f954e1dcefa789848b2ca5789a94fbea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  card: {fileID: 0}
+  cardContent: {fileID: 0}
+  cardIdx: 0
   cardImage: {fileID: 308643398}
 --- !u!95 &1757605060
 Animator:
@@ -6922,6 +7023,38 @@ MonoBehaviour:
         - m_Target: {fileID: 1757605059}
           m_TargetAssemblyTypeName: SlayTheHaunted.CardUI, Assembly-CSharp
           m_MethodName: DeselectCard
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 13
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1757605059}
+          m_TargetAssemblyTypeName: SlayTheHaunted.CardUI, Assembly-CSharp
+          m_MethodName: HandleDrag
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 14
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1757605059}
+          m_TargetAssemblyTypeName: SlayTheHaunted.CardUI, Assembly-CSharp
+          m_MethodName: HandleEndDrag
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -7910,7 +8043,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f954e1dcefa789848b2ca5789a94fbea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  card: {fileID: 0}
+  cardContent: {fileID: 0}
+  cardIdx: 0
   cardImage: {fileID: 413664744}
 --- !u!95 &2014878855
 Animator:
@@ -7999,6 +8133,38 @@ MonoBehaviour:
         - m_Target: {fileID: 2014878854}
           m_TargetAssemblyTypeName: SlayTheHaunted.CardUI, Assembly-CSharp
           m_MethodName: DeselectCard
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 13
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2014878854}
+          m_TargetAssemblyTypeName: SlayTheHaunted.CardUI, Assembly-CSharp
+          m_MethodName: HandleDrag
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 14
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2014878854}
+          m_TargetAssemblyTypeName: SlayTheHaunted.CardUI, Assembly-CSharp
+          m_MethodName: HandleEndDrag
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
