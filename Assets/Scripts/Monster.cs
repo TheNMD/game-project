@@ -1,5 +1,7 @@
 using UnityEngine;
 using TMPro;
+using System;
+using System.Collections.Generic;
 
 namespace SlayTheHaunted
 {
@@ -9,7 +11,11 @@ namespace SlayTheHaunted
         public int health;
         public int shield;
         public bool dead;
-
+        public List<string> actionList = new List<string> {"LAttack", "LAttack", "LAttack", "LAttack", "LAttack",
+                                                           "HAttack", "HAttack", "Defend", "Defend", "Defend"};
+        public GameObject lattack;
+        public GameObject hattack;
+        public GameObject defend;
         public TextMeshProUGUI healthText;
         public TextMeshProUGUI shieldText;
 
@@ -20,6 +26,30 @@ namespace SlayTheHaunted
             shield = 0;
             dead = false;
             UpdateUI();
+        }
+        public void DecideAction()
+        {
+            System.Random random = new System.Random();
+            int randomIndex = random.Next(actionList.Count);
+            string action = actionList[randomIndex];
+            switch (action)
+            {
+                case "LAttack":
+                    lattack.SetActive(true);
+                    hattack.SetActive(false);
+                    defend.SetActive(false);
+                    break;
+                case "HAttack":
+                    lattack.SetActive(false);
+                    hattack.SetActive(true);
+                    defend.SetActive(false);
+                    break;
+                case "Defend":
+                    lattack.SetActive(false);
+                    hattack.SetActive(false);
+                    defend.SetActive(true);
+                    break;
+            }
         }
         public void TakeDamage(int amount)
         {

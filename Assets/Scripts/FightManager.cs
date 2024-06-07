@@ -1,11 +1,7 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using TJ;
-
 
 namespace SlayTheHaunted
 {
@@ -23,9 +19,11 @@ namespace SlayTheHaunted
         public Player player;
         List<Card> playerHand;
         List<CardUI> playerHandUI;
+
         [Header("Card")]
         public CardSelector cardSelector;
         public CardUI selectedCard;
+
         [Header("Monster")]
         public Monster monster;
 
@@ -34,23 +32,30 @@ namespace SlayTheHaunted
             performer = FindObjectOfType<ActionPerformer>();
             player = FindObjectOfType<Player>();
             cardSelector = FindObjectOfType<CardSelector>();
+            monster = FindObjectOfType<Monster>();
             
             round = 1;
             turn = "Player";
             UpdateUI();
+            MonsterIntention();
             PlayerTurn();
         }
         public void PlayerTurn()
         {
+            player.ReEnergize();
+            player.DepleteBlock();
             cardSelector.DrawCard();
             playerHand = cardSelector.GetHand();
             playerHandUI = cardSelector.GetHandUI(playerHand);
-            player.ReEnergize();
-            player.DepleteBlock();
+        }
+        public void MonsterIntention()
+        {
+            monster.DepleteBlock();
+            monster.DecideAction();
         }
         public void MonsterTurn()
         {
-            
+
         }
         public void PlayCard(CardUI cardUI)
         {
@@ -77,12 +82,12 @@ namespace SlayTheHaunted
                 cardSelector.RemoveCard();
                 cardUI.gameObject.SetActive(false);
             }
-            // TODO MonsterAction
             MonsterTurn();
             doneButton.interactable = true;
             round += 1;
             turn = "Player";
             UpdateUI();
+            MonsterIntention();
             PlayerTurn();
         }
         void UpdateUI() 
