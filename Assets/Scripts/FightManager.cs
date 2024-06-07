@@ -1,10 +1,8 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-
+using UnityEditor;
 
 namespace SlayTheHaunted
 {
@@ -15,6 +13,8 @@ namespace SlayTheHaunted
         public TextMeshProUGUI roundText;
         public TextMeshProUGUI turnText;
         public Button doneButton;
+        public ActionPerformer performer;
+        public MenuSwitcher menuSwitcher;
 
         [Header("Stats")]
         public int maxEnergy = 3;
@@ -26,99 +26,164 @@ namespace SlayTheHaunted
         
         [Header("Player")]
         public Player player;
-        
+        List<Card> playerHand;
+        List<CardUI> playerHandUI;
+
         [Header("Card")]
         public CardSelector cardSelector;
         public CardUI selectedCard;
-        // public List<CardUI> hand = new List<CardUI>();
 
         [Header("Monster")]
         public Monster monster;
         public Animator banner;
+        public List<string> monsterAction;
 
         private void Awake()
         {   
+            menuSwitcher = FindObjectOfType<MenuSwitcher>();
+            performer = FindObjectOfType<ActionPerformer>();
+            player = FindObjectOfType<Player>();
             cardSelector = FindObjectOfType<CardSelector>();
+            monster = FindObjectOfType<Monster>();
+            
             round = 1;
             // Set player turn
             turn = Turn.Player;
             UpdateUI();
+            MonsterIntention();
             PlayerTurn();
         }
         public void PlayerTurn()
         {
-            cardSelector.DrawCard();
-            List<Card> playerHand = cardSelector.GetHand();
-            List<CardUI> playerHandUI = cardSelector.GetHandUI(playerHand);
-            
+            // Reset player stats
+            player.ReEnergize();
+            // player.DepleteBlock();
+
+            // Draw cards
+            // cardSelector.DrawCard();
+            playerHand = cardSelector.GetHand();
+            playerHandUI = cardSelector.GetHandUI(playerHand);
+
             for (int i = 0; i < playerHand.Count; i++) 
-            { Debug.Log($"Card {i + 1}: {playerHand[i].cardTitle}"); }
+            { 
+                Debug.Log($"Card {i + 1}: {playerHand[i].cardTitle}"); 
+            }
 
             doneButton.onClick.AddListener(ChangeTurn);
         }
         public void MonsterTurn()
         {
-            // sleep for 1 second
+            // // Reset monster stats
+            // monster.DepleteBlock();
+
             Debug.Log("Monster is attacking...");
-            System.Threading.Thread.Sleep(600);
+            performer.PerformAction(monsterAction[0], "Player", int.Parse(monsterAction[1]));
+
             Debug.Log("Monster Turn Over");
             ChangeTurn();
         }
-        // public void DisplayCardInHand(Card card)
-        // {
-        //     CardUI cardUI = hand[hand.Count - 1];
-        //     cardUI.LoadCard(card);
-        //     cardUI.gameObject.SetActive(true);
-        // }
-        // public void PlayCard(CardUI cardUI)
-        // {
-        //     //Debug.Log("played card");
-        //     //GoblinNob is enraged
-        //     if(cardUI.card.cardType!=Card.CardType.Attack&&enemies[0].GetComponent<Fighter>().enrage.buffValue>0)
-        //         enemies[0].GetComponent<Fighter>().AddBuff(Buff.Type.strength, enemies[0].GetComponent<Fighter>().enrage.buffValue);
-
-        //     cardActions.PerformAction(cardUI.card, cardTarget);
-
-        //     energy-=cardUI.card.GetCardCostAmount();
-        //     energyText.text=energy.ToString();
-
-        //     Instantiate(cardUI.discardEffect, cardUI.transform.position, Quaternion.identity, topParent);
-        //     selectedCard = null;
-        //     cardUI.gameObject.SetActive(false);
-        //     cardsInHand.Remove(cardUI.card);
-        //     DiscardCard(cardUI.card);
-        // }
+        public void PlayCard(CardUI cardUI)
+        {
+            if(player.energy < cardUI.cardContent.cardCost) 
+            { 
+                Debug.Log("Not enough energy to play!");
+            }
+            else
+            {
+                performer.PerformAction(cardUI.cardContent.cardTitle, "Monster", cardUI.cardContent.cardValue);
+                player.SpendEnergy(cardUI.cardContent.cardCost);
+                cardSelector.RemoveCard();
+                cardUI.gameObject.SetActive(false);
+                selectedCard = null;
+            }
+        }
         public void ChangeTurn()
         {
             // Player turn to monster turn
             if(turn==Turn.Player)
             {
                 Debug.Log("Player Turn Over");
+
+                // Update game UI
                 turn = Turn.Monster;
-                doneButton.interactable = false;
                 UpdateUI();
-                // TODO MonsterAction
+                doneButton.interactable = false;
+
+                // Discard cards in current hand
+                foreach (CardUI cardUI in playerHandUI)
+                {
+                    cardSelector.RemoveCard();
+                    cardUI.gameObject.SetActive(false);
+                }
+
+                // MonsterAction
                 MonsterTurn();
+
+                // Check if player is dead
+                if (player.dead) 
+                { 
+                    ResetGame();
+                    menuSwitcher.FightToDefeat(); 
+                }
             }
-            else
+            else if(turn==Turn.Monster)
             // Monster turn to player turn
             {
-                // Monster display intent
-                monster.DisplayIntent();
-                turn = Turn.Player;
+                Debug.Log("Monster Turn Over");
 
-                // Reset player block
+                // // Monster display intent
+                // monster.DisplayIntent();
+                MonsterIntention();
+
+                // Reset player stats
                 player.shield=0;
                 // player.fighterHealthBar.DisplayBlock(0);
                 player.energy=maxEnergy;
                 energyText.text=player.energy.ToString();
 
-                // Update to player UI
-                doneButton.interactable = true;
+                // Update game UI
                 round += 1;
+                turn = Turn.Player;
                 UpdateUI();
+                doneButton.interactable = true;
+
+                // PlayerAction
                 PlayerTurn();
+
+                // Check if monster is dead
+                if (monster.dead) 
+                { 
+                    ResetGame();
+                    menuSwitcher.FightToVictory(); 
+                }
             }
+        }
+        public void MonsterIntention()
+        {
+            monsterAction = monster.DecideAction();
+        }
+        public void ResetGame()
+        {
+            player.health = 50;
+            player.shield = 0;
+            player.dead = false;
+            player.UpdateUI();
+
+            playerHand = new List<Card> {};
+            playerHandUI = new List<CardUI> {};
+
+            monster.health = 150;
+            monster.shield = 0;
+            monster.dead = false;
+            monster.UpdateUI();
+            
+            cardSelector.ResetCard();
+
+            round = 0;
+            turn = "Player";
+            UpdateUI();
+            MonsterIntention();
+            PlayerTurn();
         }
         void UpdateUI() 
         { 

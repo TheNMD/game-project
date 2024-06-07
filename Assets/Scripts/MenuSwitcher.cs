@@ -32,7 +32,16 @@ namespace SlayTheHaunted
             menuFight.gameObject.SetActive(false);
             menuStart.gameObject.SetActive(true);
         }
-
+        public void FightToVictory()
+        {
+            menuFight.gameObject.SetActive(false);
+            menuVictory.gameObject.SetActive(true);
+        }
+        public void FightToDefeat()
+        {
+            menuFight.gameObject.SetActive(false);
+            menuDefeat.gameObject.SetActive(true);
+        }
         public void VictoryToStart()
         {
             menuVictory.gameObject.SetActive(false);

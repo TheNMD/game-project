@@ -16,7 +16,7 @@ namespace SlayTheHaunted
 
         private void Awake()
         {
-            health = 100;
+            health = 50;
             shield = 0;
             energy = 3;
             dead = false;
@@ -51,8 +51,28 @@ namespace SlayTheHaunted
             }
             return amount;
         }
+        public void AddBlock(int amount)
+        {
+            shield += amount;
+            UpdateUI();
+        }
+        public void DepleteBlock()
+        {
+            shield = 0;
+            UpdateUI();
+        }
+        public void ReEnergize()
+        {
+            energy = 3;
+            UpdateUI();
+        }
+        public void SpendEnergy(int amount)
+        {
+            energy -= amount;
+            UpdateUI();
+        }
         // Update PlayerStats UI
-        void UpdateUI()
+        public void UpdateUI()
         {
             healthText.text = health.ToString();
             shieldText.text = shield.ToString();

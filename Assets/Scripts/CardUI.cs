@@ -1,14 +1,12 @@
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
-using System.Collections;
-using System.Collections.Generic;
 
 namespace SlayTheHaunted
 {
     public class CardUI : MonoBehaviour
     {
-        public Card card;
+        public Card cardContent;
+        public int cardIdx;
         public Image cardImage;
         FightManager fightManager;
         Animator animator;
@@ -17,21 +15,21 @@ namespace SlayTheHaunted
             fightManager = FindObjectOfType<FightManager>();
             animator = GetComponent<Animator>();
         }
-        // private void OnEnable() { animator.Play("HoverOffCard"); }
-        public void LoadCard(Sprite image)
+        public void LoadCard(int idx, Card content, Sprite image)
         {
-            // gameObject.GetComponent<RectTransform>().localScale = new Vector3(1,1,1);
+            gameObject.GetComponent<RectTransform>().localScale=new Vector3(1,1,1);
+            gameObject.SetActive(true);
+            cardIdx = idx;
+            cardContent = content;
             cardImage.sprite = image;
         }
         public void SelectCard()
         {
-            Debug.Log("Card is selected");
             fightManager.selectedCard = this;
             animator.Play("Select");
         }
         public void DeselectCard()
         {
-            Debug.Log("Card is deselected");
             fightManager.selectedCard = null;
             animator.Play("Hover");
         }
@@ -43,10 +41,14 @@ namespace SlayTheHaunted
         {
             if(fightManager.selectedCard == null) { animator.Play("Idle"); }
         }
-        // public void HandleEndDrag()
-        // {
-        //     fightManager.PlayCard(this);
-        //     animator.Play("HoverOffCard");
-        // }
+        public void HandleDrag()
+        {
+
+        }
+        public void HandleEndDrag()
+        {
+            animator.Play("Idle");
+            fightManager.PlayCard(this);
+        }
     }
 }

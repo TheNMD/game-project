@@ -1,9 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
-using System.Collections;
-using System.Collections.Generic;
-
 namespace SlayTheHaunted
 {
     public class Card : ScriptableObject
@@ -11,13 +6,14 @@ namespace SlayTheHaunted
         public string cardTitle;
         public string cardDescription;
         public int cardCost;
+        public int cardValue;
         public string cardTarget;
-        public void setCard(string title, string description, int cost, string target)
+        public void SetCard(string title, string description, int value, int cost)
         {
             cardTitle = title;
             cardDescription = description;
+            cardValue = value;
             cardCost = cost;
-            cardTarget = target;
         }
         public int GetCardCostAmount() { return cardCost; }
         public string GetCardDescriptionAmount() { return cardDescription; }
