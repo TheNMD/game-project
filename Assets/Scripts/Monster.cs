@@ -16,7 +16,7 @@ namespace SlayTheHaunted
         private void Awake() 
         {
             monsterName = "Ghost";
-            health = 200;
+            health = 150;
             shield = 0;
             dead = false;
             UpdateUI();
@@ -49,6 +49,16 @@ namespace SlayTheHaunted
                 shield = 0;
             }
             return amount;
+        }
+        public void AddBlock(int amount)
+        {
+            shield += amount;
+            UpdateUI();
+        }
+        public void DepleteBlock()
+        {
+            shield = 0;
+            UpdateUI();
         }
         // Update MonsterStats UI 
         void UpdateUI()

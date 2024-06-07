@@ -1,8 +1,5 @@
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
-using System.Collections;
-using System.Collections.Generic;
 
 namespace SlayTheHaunted
 {
@@ -28,13 +25,11 @@ namespace SlayTheHaunted
         }
         public void SelectCard()
         {
-            // Debug.Log($"Card {cardIdx} is selected");
             fightManager.selectedCard = this;
             animator.Play("Select");
         }
         public void DeselectCard()
         {
-            // Debug.Log($"Card {cardIdx} is deselected");
             fightManager.selectedCard = null;
             animator.Play("Hover");
         }
@@ -52,9 +47,8 @@ namespace SlayTheHaunted
         }
         public void HandleEndDrag()
         {
-
-            fightManager.PlayCard(this);
             animator.Play("Idle");
+            fightManager.PlayCard(this);
         }
     }
 }

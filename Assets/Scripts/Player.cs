@@ -16,7 +16,7 @@ namespace SlayTheHaunted
 
         private void Awake()
         {
-            health = 100;
+            health = 50;
             shield = 0;
             energy = 3;
             dead = false;
@@ -51,9 +51,19 @@ namespace SlayTheHaunted
             }
             return amount;
         }
-        public void ReEnergize(int amount)
+        public void AddBlock(int amount)
         {
-            energy = amount;
+            shield += amount;
+            UpdateUI();
+        }
+        public void DepleteBlock()
+        {
+            shield = 0;
+            UpdateUI();
+        }
+        public void ReEnergize()
+        {
+            energy = 3;
             UpdateUI();
         }
         public void SpendEnergy(int amount)

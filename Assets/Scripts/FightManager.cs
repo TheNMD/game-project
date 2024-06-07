@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using TJ;
 
 
 namespace SlayTheHaunted
@@ -16,7 +17,8 @@ namespace SlayTheHaunted
         public string turn;
         public TextMeshProUGUI turnText;
         public Button doneButton;
-        
+        public ActionPerformer performer;
+
         [Header("Player")]
         public Player player;
         List<Card> playerHand;
@@ -24,15 +26,15 @@ namespace SlayTheHaunted
         [Header("Card")]
         public CardSelector cardSelector;
         public CardUI selectedCard;
-
         [Header("Monster")]
         public Monster monster;
 
         private void Awake()
         {   
-            cardSelector = FindObjectOfType<CardSelector>();
+            performer = FindObjectOfType<ActionPerformer>();
             player = FindObjectOfType<Player>();
-
+            cardSelector = FindObjectOfType<CardSelector>();
+            
             round = 1;
             turn = "Player";
             UpdateUI();
@@ -43,7 +45,8 @@ namespace SlayTheHaunted
             cardSelector.DrawCard();
             playerHand = cardSelector.GetHand();
             playerHandUI = cardSelector.GetHandUI(playerHand);
-            player.ReEnergize(3);
+            player.ReEnergize();
+            player.DepleteBlock();
         }
         public void MonsterTurn()
         {
@@ -57,12 +60,12 @@ namespace SlayTheHaunted
             }
             else
             {
+                performer.PerformAction(cardUI.cardContent.cardTitle, "Monster", cardUI.cardContent.cardValue);
                 player.SpendEnergy(cardUI.cardContent.cardCost);
                 cardSelector.RemoveCard();
                 cardUI.gameObject.SetActive(false);
                 selectedCard = null;
             }
-            // cardActions.PerformAction(cardUI.card, cardTarget);
         }
         public void ChangeTurn()
         {

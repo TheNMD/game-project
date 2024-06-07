@@ -62,9 +62,9 @@ namespace SlayTheHaunted
             foreach (string cardName in hand)
             {   
                 Card newCard = ScriptableObject.CreateInstance<Card>();
-                if (cardName == "LAttack") { newCard.SetCard("LAttack", "Deal 10 damage.", 1, "Enemy"); }
-                else if (cardName == "HAttack") { newCard.SetCard("HAttack", "Deal 25 damage.", 2, "Enemy"); }
-                else if (cardName == "Defend") { newCard.SetCard("Defend", "Block 10 damage.", 1, "Enemy"); }
+                if (cardName == "LAttack") { newCard.SetCard("LAttack", "Deal 10 damage.", 10, 1); }
+                else if (cardName == "HAttack") { newCard.SetCard("HAttack", "Deal 25 damage.", 25, 2); }
+                else if (cardName == "Defend") { newCard.SetCard("Defend", "Block 10 damage.", 10, 1); }
                 cards.Add(newCard);
             }
             return cards;
