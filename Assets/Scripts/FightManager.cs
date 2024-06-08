@@ -20,9 +20,6 @@ namespace SlayTheHaunted
         public int maxEnergy = 3;
         public Turn turn;
         public enum Turn {Player,Monster};
-
-        [Header("UI")]
-        public TMP_Text energyText;
         
         [Header("Player")]
         public Player player;
@@ -60,7 +57,7 @@ namespace SlayTheHaunted
             // player.DepleteBlock();
 
             // Draw cards
-            // cardSelector.DrawCard();
+            cardSelector.DrawCard();
             playerHand = cardSelector.GetHand();
             playerHandUI = cardSelector.GetHandUI(playerHand);
 
@@ -69,17 +66,16 @@ namespace SlayTheHaunted
                 Debug.Log($"Card {i + 1}: {playerHand[i].cardTitle}"); 
             }
 
-            doneButton.onClick.AddListener(ChangeTurn);
+            // doneButton.onClick.AddListener(ChangeTurn);
         }
         public void MonsterTurn()
         {
-            // // Reset monster stats
-            // monster.DepleteBlock();
+            // Reset monster stats
+            monster.DepleteBlock();
 
             Debug.Log("Monster is attacking...");
             performer.PerformAction(monsterAction[0], "Player", int.Parse(monsterAction[1]));
 
-            Debug.Log("Monster Turn Over");
             ChangeTurn();
         }
         public void PlayCard(CardUI cardUI)
@@ -131,15 +127,14 @@ namespace SlayTheHaunted
             {
                 Debug.Log("Monster Turn Over");
 
-                // // Monster display intent
-                // monster.DisplayIntent();
+                // Monster display intent
                 MonsterIntention();
 
                 // Reset player stats
                 player.shield=0;
                 // player.fighterHealthBar.DisplayBlock(0);
                 player.energy=maxEnergy;
-                energyText.text=player.energy.ToString();
+                Debug.Log("Player energy: " + player.energy.ToString());
 
                 // Update game UI
                 round += 1;
@@ -180,7 +175,7 @@ namespace SlayTheHaunted
             cardSelector.ResetCard();
 
             round = 0;
-            turn = "Player";
+            turn = Turn.Player;
             UpdateUI();
             MonsterIntention();
             PlayerTurn();
