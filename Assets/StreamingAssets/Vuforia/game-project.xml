@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig>
+  <Tracking>
+    <ImageTarget name="card" size="0.100000 0.164024" />
+    <CylinderTarget name="monster_can" sideLength="0.160000"/>
+  </Tracking>
+</QCARConfig>
