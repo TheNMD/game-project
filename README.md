@@ -18,3 +18,5 @@
 3. Copy Assets\Editor\Migration\com.ptc.vuforia.engine-10.21.3.tgz to Packages
 4. Open Library\PackageCache\com.ptc.vuforia.engine@54106664636f-1706680995000\Vuforia\Scripts\DefaultObserverEventHandler.cs
 5. Go to lines 42 and 43, change "new();" to "new UnityEvent();"
+6. Open Library\PackageCache\com.ptc.vuforia.engine@54106664636f-1706680995000\Vuforia\Scripts\Internal\RuntimeOpenSourceInitializer.cs
+7. Go to lines 148, remove the line "notOccludingCameraData.allowHDROutput = mainCameraData.allowHDROutput;" 
