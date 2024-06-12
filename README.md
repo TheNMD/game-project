@@ -4,9 +4,10 @@
 2. Click on final/base/SlayTheHaunted.exe to play the game.
 ## To load the scene and compile the game
 1. Load Assets/main in Unity Editor.
-2. Click File -> Build Settings.
-3. Click Add Open Scenes.
-4. Click build and select a folder to store the built version (The game is already built in final/base folder) 
+2. Change the resolution in the Game tab to Full HD.
+3. Click File -> Build Settings.
+4. Click Add Open Scenes.
+5. Click build and select a folder to store the built version (The game is already built in final/base folder) 
 
 # For AR
 ## To play the game
@@ -20,3 +21,5 @@
 5. Go to lines 42 and 43, change "new();" to "new UnityEvent();"
 6. Open Library\PackageCache\com.ptc.vuforia.engine@54106664636f-1706680995000\Vuforia\Scripts\Internal\RuntimeOpenSourceInitializer.cs
 7. Go to lines 148, remove the line "notOccludingCameraData.allowHDROutput = mainCameraData.allowHDROutput;" 
+
+10. Change the game tab to Simulator tab.
