@@ -24,3 +24,6 @@
 9. Connect your phone to Unity via Droid Cam
 10. Enter your Vuforia key in ARCamera -> Open Vuforia Engine Configuration -> App License Key.
 11. Click the Play button.
+
+# For demo video
+You can find the gameplay demo videos in final/demo
